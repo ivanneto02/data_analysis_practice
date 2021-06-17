@@ -1,2 +1,3 @@
 *.vscode
 ./keras/ckpt/
+./keras/model_images/
