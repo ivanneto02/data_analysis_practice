@@ -4,14 +4,27 @@ from tensorflow import keras
 from tensorflow.keras import layers
 
 import numpy as np
+import sys
 
 def main():
 
-    #first_highest()
-    #second_highest()
-    #third_highest()
-    #fourth_highest()
-    GAN_example()
+    print("Physical devices:")
+    print(tf.config.list_physical_devices('GPU'))
+
+    device_name = sys.argv[1]
+
+    if device_name == "gpu":
+        device_name = "/gpu:0"
+    else:
+        device_name = "/cpu:0"
+
+    with tf.device(device_name):
+
+        #first_highest()
+        #second_highest()
+        #third_highest()
+        #fourth_highest()
+        GAN_example()
 
 ## NOTE: Custom_Model classes are organized from highest level to lower level. Each of these classes corresponds to a function that calls the methods
 ## needed to train the models
