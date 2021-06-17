@@ -1,2 +1,2 @@
 *.vscode
-./keras/ckpt
+./keras/ckpt/
