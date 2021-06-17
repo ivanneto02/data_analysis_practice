@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 def main():
 
-    ufo_df = pd.read_csv('./databases/uforeports.csv')
+    ufo_df = pd.read_csv('../databases/uforeports.csv')
 
-    title = pd.read_csv('./databases/uforeports.csv', nrows = 0)
+    title = pd.read_csv('../databases/uforeports.csv', nrows = 0)
 
     # DF that holds values that are duplicates
     dd = ufo_df.duplicated(title)

@@ -3,7 +3,7 @@ import pandas as pd
 def main():
     pd.options.display.max_rows = 100
 
-    housing_df = pd.read_csv('./databases/housing.csv')
+    housing_df = pd.read_csv('../databases/housing.csv')
 
     #print(housing_df.head(20))
 

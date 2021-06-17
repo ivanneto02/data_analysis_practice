@@ -1,7 +1,7 @@
 import pandas as pd
 
 def main():
-    housing_df = pd.read_csv('./databases/housing.csv')
+    housing_df = pd.read_csv('../databases/housing.csv')
 
     print(housing_df.iloc[2:, 1:4])
 

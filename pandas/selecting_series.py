@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def main():
-    drinks_df = pd.read_csv('./databases/drinks.csv')
+    drinks_df = pd.read_csv('../databases/drinks.csv')
 
     print(drinks_df['country'][0:])
 

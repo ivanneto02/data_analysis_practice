@@ -1,7 +1,7 @@
 import pandas as pd
 
 def main():
-    ufo_df = pd.read_csv('./databases/uforeports.csv')
+    ufo_df = pd.read_csv('../databases/uforeports.csv')
     print(ufo_df.shape)
     print(ufo_df.describe())
 

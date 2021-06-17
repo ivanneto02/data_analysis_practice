@@ -1,7 +1,7 @@
 import pandas as pd
 
 def main():
-    clg_df = pd.read_csv('./databases/banklist.csv')
+    clg_df = pd.read_csv('../databases/banklist.csv')
 
     pd.options.display.max_rows = 100
 

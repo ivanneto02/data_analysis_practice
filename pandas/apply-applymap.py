@@ -1,7 +1,7 @@
 import pandas as pd
 
 def main():
-    titanic_df = pd.read_csv('titanic.csv')
+    titanic_df = pd.read_csv('../databases/titanic.csv')
 
     print(titanic_df)
 

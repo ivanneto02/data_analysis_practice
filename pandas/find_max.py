@@ -4,7 +4,7 @@ def main():
 
     pd.options.display.max_rows = 100
 
-    gpa_df = pd.read_csv('./databases/satgpa.csv')
+    gpa_df = pd.read_csv('../databases/satgpa.csv')
 
     to_print_df = gpa_df[(gpa_df['fy_gpa'] >= 4.0) & (gpa_df['hs_gpa'] >= 4.0)]
 

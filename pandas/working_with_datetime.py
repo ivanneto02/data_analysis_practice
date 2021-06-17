@@ -5,7 +5,7 @@ def main():
 
     pd.options.display.max_rows = 100
 
-    ufo_df = pd.read_csv('./databases/uforeports.csv')
+    ufo_df = pd.read_csv('../databases/uforeports.csv')
 
     #print("Printing time...")
     #print(ufo_df.Time.head(5))

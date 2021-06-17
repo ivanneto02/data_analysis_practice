@@ -2,7 +2,7 @@ import pandas as pd
 
 def main():
 
-    housing_df = pd.read_csv('./databases/satgpa.csv')
+    housing_df = pd.read_csv('../databases/satgpa.csv')
 
     housing_df_copy = housing_df.copy()
 

@@ -5,7 +5,7 @@ def main():
 
     pd.set_option('display.max_colwidth', 100)
 
-    chipotle_df = pd.read_csv('./databases/chipotle.csv')
+    chipotle_df = pd.read_csv('../databases/chipotle.csv')
 
     print(chipotle_df.head(5))
 

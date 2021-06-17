@@ -3,7 +3,7 @@ import pandas as pd
 
 def main():
 
-    titanic_df = pd.read_csv('titanic.csv')
+    titanic_df = pd.read_csv('../databases/titanic.csv')
 
     new_series = pd.Series(list(np.linspace(1, 4622, 4622) * np.random.randint(255)), index=list(np.linspace(1, 4622, 4622)), name='Khan')
 

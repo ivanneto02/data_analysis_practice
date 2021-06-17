@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def main():
 
-    chipotle_df = pd.read_csv('./databases/chipotle.csv')
+    chipotle_df = pd.read_csv('../databases/chipotle.csv')
 
     '''
     print(chipotle_df.head(100))

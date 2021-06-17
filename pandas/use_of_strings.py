@@ -2,7 +2,7 @@ import pandas as pd
 
 def main():
 
-    chipotle_df = pd.read_csv('./databases/chipotle.csv')
+    chipotle_df = pd.read_csv('../databases/chipotle.csv')
 
     #print(chipotle_df.item_name.str.upper())
     #print(chipotle_df.item_name.str.lower())

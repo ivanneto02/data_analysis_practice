@@ -21,6 +21,5 @@ def main():
     #print(test_arange)
     print('arange size:', test_arange.size)
 
-
 if __name__ == "__main__":
     main()

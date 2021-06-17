@@ -3,15 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
-    pew = pd.read_csv('./databases/pew.csv')
-    drinks = pd.read_csv('./databases/drinks.csv')
+    pew = pd.read_csv('../databases/pew.csv')
+    drinks = pd.read_csv('../databases/drinks.csv')
 
     #print(pew.head(15))
     #print(drinks.head(10))
 
     #print(pd.melt(pew, id_vars='religion', var_name='OBJECT', value_name='INTEGER').head(15))
 
-    billboard_df = pd.read_csv('./databases/billboard.csv')
+    billboard_df = pd.read_csv('../databases/billboard.csv')
 
     #print(billboard_df.head(10))
 
@@ -19,7 +19,7 @@ def main():
 
     #print(billboard_df.head(10))
 
-    ebola = pd.read_csv('./databases/country_timeseries.csv')
+    ebola = pd.read_csv('../databases/country_timeseries.csv')
 
     #print(ebola.head(10))
 

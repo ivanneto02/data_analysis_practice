@@ -4,7 +4,7 @@ def main():
 
     pd.options.display.max_rows = 50
 
-    titanic_df = pd.read_csv('./databases/titanic.csv')
+    titanic_df = pd.read_csv('../databases/titanic.csv')
 
     #print(titanic_df.head(10))
 

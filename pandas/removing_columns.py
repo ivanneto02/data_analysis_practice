@@ -4,7 +4,7 @@ def main():
 
     pd.options.display.max_rows = 100
 
-    titanic_df = pd.read_csv('./databases/titanic.csv')
+    titanic_df = pd.read_csv('../databases/titanic.csv')
 
     print(titanic_df)
 
@@ -14,7 +14,7 @@ def main():
 
     print(titanic_df_numeric)
 
-    housing_df = pd.read_csv('./databases/housing.csv')
+    housing_df = pd.read_csv('../databases/housing.csv')
 
     print(housing_df)
 

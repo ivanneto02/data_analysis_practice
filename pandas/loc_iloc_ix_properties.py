@@ -1,7 +1,7 @@
 import pandas as pd
 
 def main():
-    chip_df = pd.read_table('./databases/chipotle.csv')
+    chip_df = pd.read_table('../databases/chipotle.csv')
 
     print(chip_df)
     
