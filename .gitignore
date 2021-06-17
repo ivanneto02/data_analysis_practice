@@ -1,4 +1,4 @@
 *.vscode
 ./keras/ckpt/
 ./keras/model_images/
-./keras/saved_models/
+./keras/saved_models/*
