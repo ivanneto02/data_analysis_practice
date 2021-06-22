@@ -2,7 +2,6 @@ import tensorflow as tf
 from tensorflow import keras
 
 def main():
-
     #example1()
     #example2()
     #example3()
@@ -14,9 +13,7 @@ def main():
     #example9()
     #example10()
     #example11()
-    example12()
-    #example13()
-
+    #example12()
 
 def example1():
 
@@ -786,9 +783,6 @@ def example12():
     # You can pass a `training` argument in `__call__`
     # (it will get passed down to the Dropout layer).
     y = model(tf.ones((2, 16)), training=True)
-
-def example13():
-    pass
 
 if __name__ == "__main__":
     main()
