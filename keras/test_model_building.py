@@ -5,14 +5,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
+from pathlib import Path
+import sys
+
 def main():
 
     # Create the model
     inputs = keras.Input(shape=(784,), name='digits') # 28x28 graycale images
-    x = keras.layers.Dense(100, activation=tf.nn.relu, name='dense_1')(inputs)
-    x = keras.layers.Dense(64, activation=tf.nn.relu, name='dense_2')(x)
-    x = keras.layers.Dense(32, activation=tf.nn.relu, name='dense_3')(x)
-    x = keras.layers.Dense(16, activation=tf.nn.relu, name='dense_4')(x)
+    x = keras.layers.Dense(512, activation='relu', name='dense_1')(inputs)
+    x = keras.layers.Dense(512, activation='relu', name='dense_2')(x)
+    x = keras.layers.Dense(512, activation='relu', name='dense_3')(x)
+    x = keras.layers.Dense(512, activation='relu', name='dense_4')(x)
+    x = keras.layers.Dense(512, activation='relu', name='dense_5')(x)
+    x = keras.layers.Dense(512, activation='relu', name='dense_6')(x)
+    x = keras.layers.Dense(512, activation='relu', name='dense_7')(x)
+    x = keras.layers.Dense(512, activation='relu', name='dense_8')(x)
     outputs = keras.layers.Dense(10, activation='softmax', name='predictions')(x)
     
     # Define model
@@ -35,29 +42,36 @@ def main():
     x_train = x_train[:-10000]
     y_train = y_train[:-10000]
 
-    # Compilation
-    model.compile(
-        # Optimizer
-        optimizer = keras.optimizers.RMSprop(),
+    my_model = Path('./saved_models/mnist_model.h5')
+    if my_model.exists():
+        model = keras.models.load_model('./saved_models/mnist_model.h5')
+    else:
+        # Compilation
+        model.compile(
+            # Optimizer
+            optimizer = keras.optimizers.RMSprop(),
 
-        # Loss function to minimize
-        loss = keras.losses.SparseCategoricalCrossentropy(),
+            # Loss function to minimize
+            loss = keras.losses.SparseCategoricalCrossentropy(),
 
-        # List of metrics to monitor
-        metrics = [keras.metrics.SparseCategoricalAccuracy()],
-    )
+            # List of metrics to monitor
+            metrics = [keras.metrics.SparseCategoricalAccuracy()],
+        )
 
-    # Fit the model
-    history = model.fit(
+        # Fit the model
+        history = model.fit(
 
-        x_train,
-        y_train,
-        batch_size=100,
-        epochs=20,
+            x_train,
+            y_train,
+            batch_size=1000,
+            epochs=40,
 
-        # We pass some validation for monitoring validation loss and metrics at the end of each epoch
-        validation_data = (x_val, y_val),
-    )
+            # We pass some validation for monitoring validation loss and metrics at the end of each epoch
+            validation_data = (x_val, y_val),
+        )
+
+        # Saving the model
+        model.save('./saved_models/mnist_model.h5')
 
     # Model evaluation
     print('Evaluating model...')
@@ -65,9 +79,9 @@ def main():
     print('test loss, test acc:', results)
 
     # Prediction parameters
-    pred_num = 123
+    pred_num = int(sys.argv[1])
 
-    corr = 0
+    wrong = 0
 
     # Make prediction JUST FOR FUN
     print('\n\nGenerating predictions for 3 samples in the test dataset')
@@ -83,11 +97,10 @@ def main():
 
         if left != right:
             print(msg + ' -- WRONG')
+            wrong += 1
             continue
-        print(msg)
-        corr += 1
 
-    print('Performance: {}/{}, {}'.format(corr, pred_num, corr/pred_num))
+    print('Performance: {}/{}, {}'.format(pred_num - wrong, pred_num, (pred_num - wrong)/pred_num))
 
 if __name__ == '__main__':
     main()
