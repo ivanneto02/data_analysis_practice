@@ -32,7 +32,7 @@ def main():
         return
     
     # Load custom image
-    my_image = mpimg.imread('./img/zero.png')
+    my_image = mpimg.imread('./img/trick.png')
 
     plt.imshow(my_image)
     plt.show()
