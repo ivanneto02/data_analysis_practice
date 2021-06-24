@@ -16,10 +16,6 @@ def main():
     x = keras.layers.Dense(512, activation='relu', name='dense_2')(x)
     x = keras.layers.Dense(512, activation='relu', name='dense_3')(x)
     x = keras.layers.Dense(512, activation='relu', name='dense_4')(x)
-    # x = keras.layers.Dense(512, activation='relu', name='dense_5')(x)
-    # x = keras.layers.Dense(512, activation='relu', name='dense_6')(x)
-    # x = keras.layers.Dense(512, activation='relu', name='dense_7')(x)
-    # x = keras.layers.Dense(512, activation='relu', name='dense_8')(x)
     outputs = keras.layers.Dense(10, activation='softmax', name='predictions')(x)
 
     # Define model
