@@ -12,21 +12,26 @@ def main():
 
     # Create the model
     inputs = keras.Input(shape=(784,), name='digits') # 28x28 graycale images
-    x = keras.layers.Dense(512, activation='relu', name='dense_1')(inputs)
+    x = keras.layers.Dense(1024, activation='relu', name='dense_1')(inputs)
     x = keras.layers.Dense(512, activation='relu', name='dense_2')(x)
     x = keras.layers.Dense(512, activation='relu', name='dense_3')(x)
     x = keras.layers.Dense(512, activation='relu', name='dense_4')(x)
-    x = keras.layers.Dense(512, activation='relu', name='dense_5')(x)
-    x = keras.layers.Dense(512, activation='relu', name='dense_6')(x)
-    x = keras.layers.Dense(512, activation='relu', name='dense_7')(x)
-    x = keras.layers.Dense(512, activation='relu', name='dense_8')(x)
+    # x = keras.layers.Dense(512, activation='relu', name='dense_5')(x)
+    # x = keras.layers.Dense(512, activation='relu', name='dense_6')(x)
+    # x = keras.layers.Dense(512, activation='relu', name='dense_7')(x)
+    # x = keras.layers.Dense(512, activation='relu', name='dense_8')(x)
     outputs = keras.layers.Dense(10, activation='softmax', name='predictions')(x)
-    
+
     # Define model
     model = keras.Model(inputs=inputs, outputs=outputs)
 
     # Load dataset
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+
+    print('x_train shape:', x_train.shape)
+    print('x_test shape:', x_test.shape)
+    print('y_train shape:', y_train.shape)
+    print('y_test shape:', y_test.shape)
 
     # Preprocess data
     x_train = x_train.reshape(60000, 784).astype('float32') / 255
@@ -35,16 +40,25 @@ def main():
     y_train = y_train.astype('float32')
     y_test = y_test.astype('float32')
 
-    # Reserve 10,000 samples for validation
-    x_val = x_train[-10000:]
-    y_val = y_train[-10000:]
+    # Hyperparameters
+    # Reserve 20% validation split
+    epochs = 40
+    batch_size = 1000
+    validation_split = 0.2
+    pred_num = 10000
+    validation_size = int(len(x_train) * validation_split)
+    print(validation_size)
 
-    x_train = x_train[:-10000]
-    y_train = y_train[:-10000]
+    x_val = x_train[:validation_size]
+    y_val = y_train[:validation_size]
 
-    my_model = Path('./saved_models/mnist_model.h5')
+    x_train = x_train[:-validation_size]
+    y_train = y_train[:-validation_size]
+
+    model_path = './saved_models/mnist_model.h5'
+    my_model = Path(model_path)
     if my_model.exists():
-        model = keras.models.load_model('./saved_models/mnist_model.h5')
+        model = keras.models.load_model(model_path)
     else:
         # Compilation
         model.compile(
@@ -63,8 +77,8 @@ def main():
 
             x_train,
             y_train,
-            batch_size=1000,
-            epochs=40,
+            batch_size=batch_size,
+            epochs=epochs,
 
             # We pass some validation for monitoring validation loss and metrics at the end of each epoch
             validation_data = (x_val, y_val),
@@ -75,19 +89,17 @@ def main():
 
     # Model evaluation
     print('Evaluating model...')
-    results = model.evaluate(x_test, y_test, batch_size=128)
+    results = model.evaluate(x_test, y_test, batch_size=1000)
     print('test loss, test acc:', results)
-
-    # Prediction parameters
-    pred_num = int(sys.argv[1])
 
     wrong = 0
 
     # Make prediction JUST FOR FUN
     print('\n\nGenerating predictions for 3 samples in the test dataset')
     predictions = model.predict(x_test[:pred_num])
-    print('Predictions...')
 
+    # Print all our predictions
+    print('Predictions...')
     for i in range(0, len(predictions)):
 
         left = int(y_test[i])
