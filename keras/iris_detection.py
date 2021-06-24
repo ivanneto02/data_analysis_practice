@@ -127,7 +127,6 @@ def main():
 
     print('Performance: {}/{}, {}'.format(pred_num - wrong, pred_num, (pred_num - wrong)/pred_num))
 
-
 def plot_image_matrix(images, cols, rows):
     ''' Displays the images in matrix form (9x9 grid)'''
 
