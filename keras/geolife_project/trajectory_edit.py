@@ -23,6 +23,8 @@ def main():
             
             fout = open('out.txt', 'wt')
 
+            fout.write('lat,long,?1,?2,alt,time_int\n')
+
             # Print files in this dir
             for file in next(os.walk('.'))[2]:
 

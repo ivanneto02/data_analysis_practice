@@ -70,7 +70,6 @@ def main():
 
         os.chdir('..')
     
-
 '''returns specific time in format 00:00:00 in seconds'''
 def time_into_seconds(time, date):
 
