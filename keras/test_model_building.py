@@ -12,10 +12,10 @@ def main():
 
     # Create the model
     inputs = keras.Input(shape=(784,), name='digits') # 28x28 graycale images
-    x = keras.layers.Dense(1024, activation='relu', name='dense_1')(inputs)
-    x = keras.layers.Dense(512, activation='relu', name='dense_2')(x)
-    x = keras.layers.Dense(512, activation='relu', name='dense_3')(x)
-    x = keras.layers.Dense(512, activation='relu', name='dense_4')(x)
+    x = keras.layers.Dense(128, activation='relu', name='dense_1')(inputs)
+    x = keras.layers.Dense(128, activation='relu', name='dense_2')(x)
+    x = keras.layers.Dense(128, activation='relu', name='dense_3')(x)
+    x = keras.layers.Dense(128, activation='relu', name='dense_4')(x)
     outputs = keras.layers.Dense(10, activation='softmax', name='predictions')(x)
 
     # Define model
