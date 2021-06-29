@@ -18,14 +18,15 @@ def main():
     for dir in next(os.walk('.'))[1]:
         os.chdir(dir)
 
-        if 'labels.txt' not in next(os.walk('.'))[2]:
+        if ('labels.txt' not in next(os.walk('.'))[2]):
             os.chdir('../')
             print(dir, 'not in here')
             continue
-    
-        print(dir, 'in here')
-        print('making dataframe for user...', dir)
-        make_dataframe(data_path, dir, i * 100000)
+
+        if ('labels.txt' in next(os.walk('.'))[2]) and (dir >= '163'):
+            print(dir, 'in here')
+            print('making dataframe for user...', dir)
+            make_dataframe(data_path, dir, i * 100000000)
 
         os.chdir('../')
 
@@ -70,6 +71,9 @@ def make_dataframe(data_path, dir, id_add):
             if dict[j][0][0] <= curr_time <= dict[j][0][1]:
                 dict[j][1].append(traj_df['lat'][i])
                 dict[j][2].append(traj_df['long'][i])
+
+        if i % 1000 == 0:
+            print('step:', i)
 
     print(len(dict))
 
