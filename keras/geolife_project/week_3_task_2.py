@@ -15,11 +15,64 @@ def main():
     # Which user to lookup
     user_input = input('Input the user to lookup (000-181): ')
 
+    ## PROVIDE FUNCTION TO EXECUTE
+
+    ##
+
+    '''Example usage'''
     # Perform lookup
     user_list = lat_long_pairs(user_input)
 
-    # Create the histogram
+    # Create the histogram for `user_input`
     create_histograms(user_list, user_input)
+
+    # Create histograms for all the users
+    mass_histograms()
+
+'''
+This function creates one histogram per user for all of the users (000-181)
+
+**IMPORTANT
+Running this function will produce dozens of pyplot plots. Be careful with usage.
+'''
+def mass_histograms():
+   
+    # Iterates 182 times.
+    for i in range(0, 182):
+        u_id = i
+        user_list = lat_long_pairs(u_id)
+
+        time_re = '(\d+[:]\d+[:]\d+)'
+
+        x_range = list(range(24))
+        x_range = [str(i) for i in x_range]
+
+        time_list = list()
+        height_list = list()
+
+        for data in user_list:
+            datetime = data[2]
+            time = re.findall(time_re, datetime)[0][:2]
+            time_list.append(int(time))
+
+        for i in range(0, 24):
+
+            curr_count = 0
+            
+            for time in time_list:
+                if time == i:
+                    curr_count += 1
+
+            height_list.append(curr_count)
+
+        fig = plt.figure(figsize=(13, 7))
+        plt.bar(x=x_range, height=height_list, alpha=0.5, ec='black', align='center', color='red')
+        plt.title('Number of trajectory starts per hour in a day for user `{}`'.format(u_id))
+        plt.xticks(x_range, color='black', fontsize='13')
+        plt.xlabel('Hour (in a day)')
+        plt.ylabel('Number of trajectory starts')
+        plt.show()
+
 
 '''
 This function creates a histogram for the passed `u_id` user, based on a list in the format
