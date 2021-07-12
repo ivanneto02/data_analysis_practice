@@ -5,8 +5,8 @@ def main():
 
     #make_bases()
     #make_individual()
-
-    make_final_dataframes()
+    #make_final_dataframes()
+    pass
 
 def make_final_dataframes():
 
@@ -88,7 +88,6 @@ def make_individual():
             else:
 
                 curr_df.to_csv(unlabeled_dp + '/final_df_{}.csv'.format(dir))
-
 
         os.chdir('../')
 

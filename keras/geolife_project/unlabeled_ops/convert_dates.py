@@ -21,7 +21,7 @@ def main():
             os.chdir('./Trajectory/')
 
             fout = open('out_int_dates.txt', 'wt')
-            fout.write('lat, long, ?1, ?2, alt, date, time\n')
+            fout.write('lat,long,?1,?2,alt,time_int\n')
 
             # Regex for date item (\d{4}[-]\d{2}[-]\d{2})
             date_re = '(\d{4}[-]\d{2}[-]\d{2})'

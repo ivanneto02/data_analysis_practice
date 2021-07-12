@@ -14,13 +14,13 @@ def main():
 
         os.chdir('./' + dir)
 
-        if ('labels.txt' not in next(os.walk('.'))[2]) and (dir != 'final_dataframes'):
+        if (dir != 'final_dataframes'):
 
             # Access `Trajectory` folder
             os.chdir('./Trajectory/')
 
             fout = open('out.txt', 'wt')
-            fout.write('lat, long, ?1, ?2, alt, date, time\n')
+            fout.write('user_id,lat,long,?1,?2,alt,date,time\n')
 
             # For each .PLT file
             for file in next(os.walk('.'))[2]:
